@@ -1,12 +1,13 @@
 """
-Módulo para processamento de dados do Lending Club
+Módulo para Anonimização e Amostragem Estratificada - Lending Club Dataset
 
-Este módulo contém as funções necessárias para:
-1. Download de dados do Kaggle
-2. Anonimização e filtragem
-3. Amostragem estratificada
-4. Preparação para GitHub
+Este módulo contém as funções especializadas para:
+1. Download automático de dados do Kaggle
+2. Anonimização completa (LGPD-compliant)
+3. Amostragem estratificada por ano e target
+4. Preparação de dataset para GitHub (<100MB)
 
+Objetivo: Preparar amostra representativa para análise reprodutível
 Autor: André Camatta
 """
 
