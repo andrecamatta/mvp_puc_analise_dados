@@ -16,8 +16,9 @@ Prever se um empréstimo peer-to-peer (P2P) entrará em default no momento da co
 ## Estrutura do Projeto
 
 ```
-├── mvp_puc.ipynb                      # Notebook principal
-├── lending_club_sample_2015_2020.csv.gz  # Dataset anonimizado
+├── mvp_puc.ipynb                      # Notebook principal (executável pelo avaliador)
+├── data_processing.py                 # Módulo com pipeline de dados
+├── lending_club_sample_2015_2020.csv.gz  # Dataset anonimizado (80MB)
 ├── LCDataDictionary.xlsx              # Dicionário de dados
 ├── requirements/dependencies          # pyproject.toml, uv.lock
 └── README.md                          # Este arquivo
@@ -25,9 +26,17 @@ Prever se um empréstimo peer-to-peer (P2P) entrará em default no momento da co
 
 ## Reprodução
 
+### Para Avaliadores (Simples)
 1. Clone o repositório
-2. Instale dependências: `uv sync` ou `pip install pandas numpy kaggle`
+2. Instale dependências: `uv sync` ou `pip install pandas numpy`
 3. Execute o notebook: `mvp_puc.ipynb`
+   - Dataset anonimizado já incluído
+   - Não requer configuração de APIs externas
+
+### Para Desenvolvedores (Pipeline Completo)
+1. Configure API do Kaggle: coloque `kaggle.json` em `~/.kaggle/`
+2. Instale dependências: `uv add kaggle pandas numpy`
+3. Use o módulo: `from data_processing import process_lending_club_pipeline`
 
 ## Anonimização Aplicada
 
