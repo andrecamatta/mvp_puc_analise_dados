@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Dataset original (muito grande para GitHub)
+Loan_status_2007-2020Q3.gzip
+*.gzip
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Credenciais
+kaggle.json
+.kaggle/
+
+# Arquivos temporários
+*.tmp
+*.temp
