@@ -1,54 +1,46 @@
-# MVP Análise de Dados - Lending Club
+# MVP: Previsão de Inadimplência na Lending Club
 
 **Autor:** André Camatta
 
-## Objetivo
+## 1. Visão Geral
 
-Prever se um empréstimo peer-to-peer (P2P) entrará em default no momento da concessão, utilizando dados da Lending Club (2015-2020).
+Este projeto é um MVP de ciência de dados que aborda o problema de **previsão de inadimplência (*default*)** em empréstimos *peer-to-peer* (P2P), utilizando um dataset público da **Lending Club**. O objetivo é desenvolver um modelo de classificação binária para estimar a probabilidade de um empréstimo não ser pago, servindo como uma ferramenta de suporte à decisão para investidores em plataformas semelhantes.
 
-## Dataset
+O estudo utiliza uma amostra de **600.000 empréstimos** concedidos entre **2015 e 2020**, preparada para garantir representatividade e conformidade com as boas práticas de desenvolvimento.
 
-- **Fonte:** [Lending Club 2007-2020Q3](https://www.kaggle.com/datasets/ethon0426/lending-club-20072020q1)
-- **Período:** 2015-2020 (filtrado para regime regulatório homogêneo)
-- **Amostra:** `lending_club_sample_2015_2020.csv.gz` (≈400k registros, 53MB)
-- **Target:** Classificação binária (default vs. pago)
+## 2. Metodologia
 
-## Estrutura do Projeto
+O projeto foi estruturado em três etapas principais:
+
+1.  **Análise Exploratória de Dados (EDA)**: Investigação inicial dos dados para extrair insights, compreender a relação entre as variáveis e guiar a etapa de pré-processamento.
+
+2.  **Pipeline de Pré-processamento**: Construção de um pipeline para preparar os dados para a modelagem, incluindo seleção de features, imputação de valores ausentes e transformação de variáveis numéricas (logarítmica, padronização) e categóricas (ordinal, one-hot e target encoding).
+
+3.  **Modelagem Preditiva**: Utilização do algoritmo **LightGBM** para a classificação, com tratamento para o desbalanceamento de classes e validação através de **validação cruzada estratificada**, garantindo a robustez do modelo.
+
+## 3. Estrutura do Repositório
 
 ```
-├── mvp_puc.ipynb                      # Notebook principal (executável pelo avaliador)
-├── data_processing.py                 # Módulo com pipeline de dados
-├── lending_club_sample_2015_2020.csv.gz  # Dataset anonimizado (80MB)
-├── LCDataDictionary.xlsx              # Dicionário de dados
-├── requirements/dependencies          # pyproject.toml, uv.lock
-└── README.md                          # Este arquivo
+.
+├── dataset_anonymization.py    # Script para anonimizar e amostrar o dataset.
+├── lending_club_sample_2015_2020.csv.gz # Amostra de dados utilizada.
+├── mvp_puc_lending_club.ipynb  # Notebook Jupyter com toda a análise.
+├── pyproject.toml              # Dependências do projeto.
+└── README.md                   # Este arquivo.
 ```
 
-## Reprodução
+## 4. Como Reproduzir a Análise
 
-### Para Avaliadores (Simples)
-1. Clone o repositório
-2. Instale dependências: `uv sync` ou `pip install pandas numpy`
-3. Execute o notebook: `mvp_puc.ipynb`
-   - Dataset anonimizado já incluído
-   - Não requer configuração de APIs externas
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/andrecamatta/mvp_puc_analise_dados.git
+    cd mvp_puc_analise_dados
+    ```
 
-### Para Desenvolvedores (Pipeline Completo)
-1. Configure API do Kaggle: coloque `kaggle.json` em `~/.kaggle/`
-2. Instale dependências: `uv add kaggle pandas numpy`
-3. Use o módulo: `from data_processing import process_lending_club_pipeline`
+2.  **Instale as dependências:**
+    ```bash
+    pip install pandas numpy scikit-learn matplotlib seaborn lightgbm geopandas
+    ```
 
-## Anonimização Aplicada
-
-- ✅ Filtro temporal (2015-2020)
-- ✅ Remoção de colunas de vazamento futuro
-- ✅ Exclusão de identificadores pessoais (LGPD)
-- ✅ Amostragem estratificada (400k registros)
-- ✅ Agregação de status em binário (default/pago)
-
-## Tecnologias
-
-- Python 3.12
-- Pandas, NumPy
-- Jupyter Notebook
-- uv (gerenciador de pacotes)
+3.  **Execute o Notebook:**
+    Abra e execute o notebook `mvp_puc_lending_club.ipynb` em um ambiente Jupyter (Jupyter Lab, VS Code etc.).
