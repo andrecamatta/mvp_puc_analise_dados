@@ -39,7 +39,7 @@ O projeto foi estruturado em três etapas principais:
 
 2.  **Instale as dependências:**
     ```bash
-    pip install pandas numpy scikit-learn matplotlib seaborn lightgbm geopandas
+    pip install pandas numpy scikit-learn matplotlib seaborn lightgbm geopandas adjusttext
     ```
 
 3.  **Execute o Notebook:**
